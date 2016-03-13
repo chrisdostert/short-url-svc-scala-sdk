@@ -3,4 +3,4 @@ stages:
 - name: test
   type: pipeline
 - name: publish-to-bintray
-- type: dev-op
+  type: dev-op
