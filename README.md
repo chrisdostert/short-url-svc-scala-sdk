@@ -11,7 +11,7 @@ resolvers += Resolver.bintrayRepo("chrisdostert","maven")
 
 // see https://bintray.com/chrisdostert/maven/short-url-svc-scala-sdk/view 
 // for available versions
-libraries += "com.chrisdostert" % "short-url-svc-scala-sdk" % "0.1.0+1456877193"
+libraries += "com.chrisdostert" % "short-url-svc-scala-sdk" % shortUrlSvcSdkVersion
 ```
 
 # Versioning
