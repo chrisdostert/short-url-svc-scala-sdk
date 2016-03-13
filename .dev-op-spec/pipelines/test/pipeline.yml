@@ -1,0 +1,10 @@
+description: runs all tests
+stages:
+- name: unit-test
+  type: dev-op
+- name: style-test
+  type: dev-op
+- name: integration-test
+  type: dev-op
+- name: code-coverage-test
+  type: dev-op

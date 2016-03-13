@@ -1,0 +1,1 @@
+name := "short-url-svc-scala-sdk"

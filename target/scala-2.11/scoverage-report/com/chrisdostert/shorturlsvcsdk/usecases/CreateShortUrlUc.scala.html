@@ -1,0 +1,467 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          com/chrisdostert/shorturlsvcsdk/usecases/CreateShortUrlUc.scala.html
+        </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package com.chrisdostert.shorturlsvcsdk.usecases
+</span>2 <span style=''>
+</span>3 <span style=''>import java.io.IOException
+</span>4 <span style=''>import java.net.URL
+</span>5 <span style=''>
+</span>6 <span style=''>import akka.http.scaladsl.Http
+</span>7 <span style=''>import akka.http.scaladsl.client.RequestBuilding
+</span>8 <span style=''>import akka.http.scaladsl.model.StatusCodes._
+</span>9 <span style=''>import akka.http.scaladsl.model.{HttpRequest, HttpResponse}
+</span>10 <span style=''>import akka.http.scaladsl.unmarshalling.Unmarshal
+</span>11 <span style=''>import akka.stream.Materializer
+</span>12 <span style=''>import akka.stream.scaladsl.{Flow, Sink, Source}
+</span>13 <span style=''>import com.chrisdostert.shorturlsvcsdk.json.JsonSupport
+</span>14 <span style=''>import com.chrisdostert.shorturlsvcsdk.models.ShortUrlView
+</span>15 <span style=''>
+</span>16 <span style=''>import scala.concurrent.ExecutionContext.Implicits.global
+</span>17 <span style=''>import scala.concurrent.Future
+</span>18 <span style=''>
+</span>19 <span style=''>private[shorturlsvcsdk]
+</span>20 <span style=''>class CreateShortUrlUc(
+</span>21 <span style=''>  private val connection: Flow[HttpRequest, HttpResponse, Future[Http.OutgoingConnection]],
+</span>22 <span style=''>  private implicit val materializer: Materializer,
+</span>23 <span style=''>  private implicit val jsonSupport: JsonSupport
+</span>24 <span style=''>) {
+</span>25 <span style=''>
+</span>26 <span style=''>  import jsonSupport._
+</span>27 <span style=''>
+</span>28 <span style=''>  def execute(target: URL): Future[ShortUrlView] =
+</span>29 <span style=''>    </span><span style='background: #AEF1AE'>Source
+</span>30 <span style=''></span><span style='background: #AEF1AE'>      .single(
+</span>31 <span style=''></span><span style='background: #AEF1AE'>        RequestBuilding.Post(
+</span>32 <span style=''></span><span style='background: #AEF1AE'>          "/short-urls",
+</span>33 <span style=''></span><span style='background: #AEF1AE'>          target
+</span>34 <span style=''></span><span style='background: #AEF1AE'>        )
+</span>35 <span style=''></span><span style='background: #AEF1AE'>      )
+</span>36 <span style=''></span><span style='background: #AEF1AE'>      .via(connection)
+</span>37 <span style=''></span><span style='background: #AEF1AE'>      .runWith(Sink.head)(materializer)
+</span>38 <span style=''></span><span style='background: #AEF1AE'>      .flatMap { response =>
+</span>39 <span style=''></span><span style='background: #AEF1AE'>        response.status match {
+</span>40 <span style=''></span><span style='background: #AEF1AE'>          case OK => Unmarshal(response.entity).to[ShortUrlView]
+</span>41 <span style=''></span><span style='background: #AEF1AE'>          case _ => </span><span style='background: #F0ADAD'>Future.failed(new IOException(response.toString))</span><span style='background: #AEF1AE'>
+</span>42 <span style=''></span><span style='background: #AEF1AE'>        }
+</span>43 <span style=''></span><span style='background: #AEF1AE'>      }</span><span style=''>
+</span>44 <span style=''>
+</span>45 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          994
+          -
+          994
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.json.JsonSupport.urlFormat
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.jsonSupport.urlFormat
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          974
+          -
+          1047
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          akka.http.scaladsl.client.RequestBuilding.RequestBuilder.apply
+        </td>
+        <td style="background: #AEF1AE">
+          akka.http.scaladsl.client.RequestBuilding.Post.apply[java.net.URL](&quot;/short-urls&quot;, target)(CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller[java.net.URL](CreateShortUrlUc.this.jsonSupport.urlFormat, CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller$default$2[java.net.URL]), scala.concurrent.ExecutionContext.Implicits.global)
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          994
+          -
+          994
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport.sprayJsonMarshaller
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller[java.net.URL](CreateShortUrlUc.this.jsonSupport.urlFormat, CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller$default$2[java.net.URL])
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          994
+          -
+          994
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport.sprayJsonMarshaller$default$2
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller$default$2[java.net.URL]
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          1006
+          -
+          1019
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          &quot;/short-urls&quot;
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1067
+          -
+          1077
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.usecases.CreateShortUrlUc.connection
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.connection
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          41
+        </td>
+        <td>
+          1105
+          -
+          1117
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.usecases.CreateShortUrlUc.materializer
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.materializer
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1094
+          -
+          1103
+        </td>
+        <td>
+          TypeApply
+        </td>
+        <td>
+          akka.stream.scaladsl.Sink.head
+        </td>
+        <td style="background: #AEF1AE">
+          akka.stream.scaladsl.Sink.head[akka.http.scaladsl.model.HttpResponse]
+        </td>
+      </tr><tr>
+        <td>
+          38
+        </td>
+        <td>
+          51
+        </td>
+        <td>
+          944
+          -
+          1332
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          scala.concurrent.Future.flatMap
+        </td>
+        <td style="background: #AEF1AE">
+          akka.stream.scaladsl.Source.single[akka.http.scaladsl.model.HttpRequest](akka.http.scaladsl.client.RequestBuilding.Post.apply[java.net.URL](&quot;/short-urls&quot;, target)(CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller[java.net.URL](CreateShortUrlUc.this.jsonSupport.urlFormat, CreateShortUrlUc.this.jsonSupport.sprayJsonMarshaller$default$2[java.net.URL]), scala.concurrent.ExecutionContext.Implicits.global)).via[akka.http.scaladsl.model.HttpResponse, scala.concurrent.Future[akka.http.scaladsl.Http.OutgoingConnection]](CreateShortUrlUc.this.connection).runWith[scala.concurrent.Future[akka.http.scaladsl.model.HttpResponse]](akka.stream.scaladsl.Sink.head[akka.http.scaladsl.model.HttpResponse])(CreateShortUrlUc.this.materializer).flatMap[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](((response: akka.http.scaladsl.model.HttpResponse) =&gt; response.status match {
+  case akka.http.scaladsl.model.StatusCodes.OK =&gt; akka.http.scaladsl.unmarshalling.Unmarshal.apply[akka.http.scaladsl.model.ResponseEntity](response.entity).to[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](CreateShortUrlUc.this.jsonSupport.sprayJsonUnmarshaller[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](CreateShortUrlUc.this.jsonSupport.shortUrlViewFormat), scala.concurrent.ExecutionContext.Implicits.global, CreateShortUrlUc.this.materializer)
+  case _ =&gt; scala.concurrent.Future.failed[Nothing](new java.io.IOException(response.toString()))
+}))(scala.concurrent.ExecutionContext.Implicits.global)
+        </td>
+      </tr><tr>
+        <td>
+          39
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1156
+          -
+          1171
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          akka.http.scaladsl.model.HttpResponse.status
+        </td>
+        <td style="background: #AEF1AE">
+          response.status
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1230
+          -
+          1230
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.json.JsonSupport.shortUrlViewFormat
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.jsonSupport.shortUrlViewFormat
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          1201
+          -
+          1244
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          akka.http.scaladsl.unmarshalling.Unmarshal.to
+        </td>
+        <td style="background: #AEF1AE">
+          akka.http.scaladsl.unmarshalling.Unmarshal.apply[akka.http.scaladsl.model.ResponseEntity](response.entity).to[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](CreateShortUrlUc.this.jsonSupport.sprayJsonUnmarshaller[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](CreateShortUrlUc.this.jsonSupport.shortUrlViewFormat), scala.concurrent.ExecutionContext.Implicits.global, CreateShortUrlUc.this.materializer)
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          1230
+          -
+          1230
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.usecases.CreateShortUrlUc.materializer
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.materializer
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1211
+          -
+          1226
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          akka.http.scaladsl.model.HttpResponse.entity
+        </td>
+        <td style="background: #AEF1AE">
+          response.entity
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1230
+          -
+          1230
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport.sprayJsonUnmarshaller
+        </td>
+        <td style="background: #AEF1AE">
+          CreateShortUrlUc.this.jsonSupport.sprayJsonUnmarshaller[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](CreateShortUrlUc.this.jsonSupport.shortUrlViewFormat)
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          1265
+          -
+          1314
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.concurrent.Future.failed
+        </td>
+        <td style="background: #F0ADAD">
+          scala.concurrent.Future.failed[Nothing](new java.io.IOException(response.toString()))
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          1279
+          -
+          1313
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          java.io.IOException.&lt;init&gt;
+        </td>
+        <td style="background: #F0ADAD">
+          new java.io.IOException(response.toString())
+        </td>
+      </tr><tr>
+        <td>
+          41
+        </td>
+        <td>
+          48
+        </td>
+        <td>
+          1295
+          -
+          1312
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          akka.http.scaladsl.model.HttpResponse.toString
+        </td>
+        <td style="background: #F0ADAD">
+          response.toString()
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

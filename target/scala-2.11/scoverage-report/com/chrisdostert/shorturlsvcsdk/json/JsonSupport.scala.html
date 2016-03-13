@@ -1,0 +1,190 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          com/chrisdostert/shorturlsvcsdk/json/JsonSupport.scala.html
+        </title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier;'>1 <span style=''>package com.chrisdostert.shorturlsvcsdk.json
+</span>2 <span style=''>
+</span>3 <span style=''>import java.net.URL
+</span>4 <span style=''>
+</span>5 <span style=''>import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
+</span>6 <span style=''>import com.chrisdostert.shorturlsvcsdk.json.formats.UrlFormat
+</span>7 <span style=''>import com.chrisdostert.shorturlsvcsdk.models._
+</span>8 <span style=''>import spray.json._
+</span>9 <span style=''>
+</span>10 <span style=''>private[shorturlsvcsdk]
+</span>11 <span style=''>trait JsonSupport
+</span>12 <span style=''>  extends SprayJsonSupport
+</span>13 <span style=''>    with DefaultJsonProtocol {
+</span>14 <span style=''>
+</span>15 <span style=''>
+</span>16 <span style=''>  implicit val urlFormat: RootJsonFormat[URL] = </span><span style='background: #AEF1AE'>UrlFormat</span><span style=''>
+</span>17 <span style=''>
+</span>18 <span style=''>  implicit val shortUrlViewFormat: RootJsonFormat[ShortUrlView] =
+</span>19 <span style=''>    </span><span style='background: #AEF1AE'>jsonFormat2(ShortUrlView)</span><span style=''>
+</span>20 <span style=''>
+</span>21 <span style=''>}
+</span>22 <span style=''>
+</span>23 <span style=''>object JsonSupport extends JsonSupport
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          16
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          413
+          -
+          422
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.json.formats.UrlFormat
+        </td>
+        <td style="background: #AEF1AE">
+          com.chrisdostert.shorturlsvcsdk.json.formats.UrlFormat
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          505
+          -
+          505
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.json.JsonSupport.urlFormat
+        </td>
+        <td style="background: #AEF1AE">
+          JsonSupport.this.urlFormat
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          505
+          -
+          505
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          spray.json.BasicFormats.StringJsonFormat
+        </td>
+        <td style="background: #AEF1AE">
+          JsonSupport.this.StringJsonFormat
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          494
+          -
+          519
+        </td>
+        <td>
+          ApplyToImplicitArgs
+        </td>
+        <td>
+          spray.json.ProductFormatsInstances.jsonFormat2
+        </td>
+        <td style="background: #AEF1AE">
+          JsonSupport.this.jsonFormat2[String, java.net.URL, com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](com.chrisdostert.shorturlsvcsdk.models.ShortUrlView)(JsonSupport.this.StringJsonFormat, JsonSupport.this.urlFormat, reflect.this.ClassManifestFactory.classType[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](classOf[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView]))
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          505
+          -
+          505
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.reflect.ClassManifestFactory.classType
+        </td>
+        <td style="background: #AEF1AE">
+          reflect.this.ClassManifestFactory.classType[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView](classOf[com.chrisdostert.shorturlsvcsdk.models.ShortUrlView])
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          506
+          -
+          518
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          com.chrisdostert.shorturlsvcsdk.models.ShortUrlView
+        </td>
+        <td style="background: #AEF1AE">
+          com.chrisdostert.shorturlsvcsdk.models.ShortUrlView
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

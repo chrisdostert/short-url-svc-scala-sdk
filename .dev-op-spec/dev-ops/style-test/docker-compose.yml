@@ -1,0 +1,5 @@
+style-test:
+  extends:
+    file: ../.common/docker-compose.yml
+    service: sbt
+  entrypoint: sbt scalastyle test:scalastyle it:scalastyle

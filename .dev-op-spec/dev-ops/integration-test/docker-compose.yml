@@ -1,0 +1,8 @@
+integration-test:
+  extends:
+    file: ../.common/docker-compose.yml
+    service: sbt
+  entrypoint: sbt coverage it:test
+  environment:
+    - SUPPLIER_PLATFORM_SVC_HOST=load-balance-svc.nintex-dev.5ecdac38.svc.dockerapp.io
+    - SUPPLIER_PLATFORM_SVC_PORT=80

@@ -1,0 +1,16 @@
+[0m[[0minfo[0m] [0mscalastyle using config /project-root/scalastyle-config.xml[0m
+[0m[[0mdebug[0m] [0mStarting scalastyle[0m
+[0m[[0mdebug[0m] [0mstart file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/ShortUrlSvcSdkTest.scala[0m
+[0m[[0mdebug[0m] [0mend file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/ShortUrlSvcSdkTest.scala[0m
+[0m[[0mdebug[0m] [0mstart file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/tdk/BaseFunSpecTest.scala[0m
+[0m[[0mdebug[0m] [0mend file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/tdk/BaseFunSpecTest.scala[0m
+[0m[[0mdebug[0m] [0mstart file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/tdk/testobjects/ATest.scala[0m
+[0m[[0mdebug[0m] [0mend file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/tdk/testobjects/ATest.scala[0m
+[0m[[0mdebug[0m] [0mstart file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/tdk/testobjects/ATestShortUrlView.scala[0m
+[0m[[0mdebug[0m] [0mend file /project-root/src/test/scala/com/chrisdostert/shorturlsvcsdk/tdk/testobjects/ATestShortUrlView.scala[0m
+[0m[[0minfo[0m] [0mProcessed 4 file(s)[0m
+[0m[[0minfo[0m] [0mFound 0 errors[0m
+[0m[[0minfo[0m] [0mFound 0 warnings[0m
+[0m[[0minfo[0m] [0mFound 0 infos[0m
+[0m[[0minfo[0m] [0mFinished in 3 ms[0m
+[0m[[32msuccess[0m] [0mcreated output: /project-root/target[0m

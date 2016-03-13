@@ -1,0 +1,5 @@
+code-coverage-test:
+  extends:
+    file: ../.common/docker-compose.yml
+    service: sbt
+  entrypoint: sbt coverageReport
