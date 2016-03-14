@@ -1,4 +1,4 @@
-This is the Scala SDK for the [short-url-svc](https://github.com/chrisdostert/short-url-svc)
+This is the Scala SDK for the [short-url-svc](https://github.com/urlable/short-url-svc)
 
 # Supported Use Cases
 - Create Short URL 
@@ -7,11 +7,11 @@ This is the Scala SDK for the [short-url-svc](https://github.com/chrisdostert/sh
 # Installation:
 ```SCALA
 // build.sbt
-resolvers += Resolver.bintrayRepo("chrisdostert","maven")
+resolvers += Resolver.bintrayRepo("urlable","maven")
 
-// see https://bintray.com/chrisdostert/maven/short-url-svc-scala-sdk/view 
+// see https://bintray.com/urlable/maven/short-url-svc-scala-sdk/view 
 // for available versions
-libraries += "com.chrisdostert" % "short-url-svc-scala-sdk" % shortUrlSvcSdkVersion
+libraries += "com.urlable" % "short-url-svc-scala-sdk" % shortUrlSvcSdkVersion
 ```
 
 # Versioning

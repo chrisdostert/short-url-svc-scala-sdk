@@ -24,8 +24,8 @@ object Build extends Build with LibraryDependencyVersions {
       pomExtra :=
         (
           <scm>
-            <url>https://github.com/chrisdostert/short-url-svc-scala-sdk</url>
-            <connection>scm:git:git@github.com:chrisdostert/short-url-svc-scala-sdk.git</connection>
+            <url>https://github.com/urlable/short-url-svc-scala-sdk</url>
+            <connection>scm:git:git@github.com:urlable/short-url-svc-scala-sdk.git</connection>
           </scm>
             <developers>
               <developer>
@@ -37,17 +37,17 @@ object Build extends Build with LibraryDependencyVersions {
           ),
       pomIncludeRepository := { _ => false },
       publishMavenStyle := true,
-      publishTo := Some("Bintray API Realm" at "https://api.bintray.com/maven/chrisdostert/maven/short-url-svc-scala-sdk/;publish=1"),
+      publishTo := Some("Bintray API Realm" at "https://api.bintray.com/maven/urlable/maven/short-url-svc-scala-sdk/;publish=1"),
       version := s"0.1.0+${Instant.now().getEpochSecond}",
       coverageEnabled in test := true,
       coverageMinimum := 90,
       coverageFailOnMinimum := true,
-      homepage := Some(new URL("https://github.com/chrisdostert/short-url-svc-scala-sdk")),
+      homepage := Some(new URL("https://github.com/urlable/short-url-svc-scala-sdk")),
       licenses +=("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
       updateOptions := updateOptions
         .value
         .withCachedResolution(true),
-      organization := "com.chrisdostert",
+      organization := "com.urlable",
       scalaVersion := "2.11.7",
       scalacOptions := Seq(
         "-unchecked",

@@ -4,5 +4,5 @@ integration-test:
     service: sbt
   entrypoint: sbt coverage it:test
   environment:
-    - SUPPLIER_PLATFORM_SVC_HOST=load-balance-svc.nintex-dev.5ecdac38.svc.dockerapp.io
-    - SUPPLIER_PLATFORM_SVC_PORT=80
+    - SHORT_URL_SVC_HOST=load-balance-svc.urlable-dev.85f92b22.svc.dockerapp.io
+    - SHORT_URL_SVC_PORT=80
