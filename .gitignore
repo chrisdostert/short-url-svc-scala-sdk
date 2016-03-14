@@ -3,7 +3,7 @@
 .idea/
 
 ### SBT
-req/
+target/
 
 ### Sensitive Files
 *env

@@ -1,5 +1,0 @@
-[0m[[0minfo[0m] [0m[32mShortUrlSvcSdkTest:[0m[0m
-[0m[[0minfo[0m] [0m[32mcreateShortUrl[0m[0m
-[0m[[0minfo[0m] [0m[32m- should invoke createShortUrlUc.execute and return result[0m[0m
-[0m[[0minfo[0m] [0m[32mgetShortUrlWithId[0m[0m
-[0m[[0minfo[0m] [0m[32m- should invoke getShortUrlWithId.execute and return result[0m[0m

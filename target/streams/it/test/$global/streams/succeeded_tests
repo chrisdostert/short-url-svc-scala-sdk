@@ -1,5 +1,0 @@
-#Successful Tests
-#Sun Mar 13 22:18:42 GMT 2016
-com.chrisdostert.shorturlsvcsdk.usecases.CreateShortUrlUcIT=1457907521700
-com.chrisdostert.shorturlsvcsdk.usecases.GetShortUrlUcIT=1457907522497
-com.chrisdostert.shorturlsvcsdk.ShortUrlSvcSdkIT=1457907520764
